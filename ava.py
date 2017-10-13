@@ -4,6 +4,7 @@ from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
 import time, random
 from flask import Flask, request, redirect
+from O365 import Message
 
 # Find these values at https://twilio.com/user/account
 
@@ -85,6 +86,23 @@ def quote():
         "Care about what other people think and you will always be their prisoner."]
     return random.choice(quote_list)
 
+def message():
+    # Basic variables for authorization:
+    user = "YourName" # For shits and giggles...
+    email = 'youremail@altamontschool.org'
+    pwd = 'yoursupersecretpassword'
+    auth = (email, pwd)
+    # Message object:
+    m = Message(auth=auth)
+    # Recipients
+    m.setRecipients('I generally create a list and pass it through here.')
+    # Subject:
+    m.setSubject('Automation rules')
+    # Body:
+    m.setBody('Good morning, {}.\n\nHAL-9000'.format(user))
+    # Send:
+    m.sendMessage()
+
 while True:
     morning()
     schedule(week())
@@ -93,4 +111,7 @@ while True:
     print(str(Hour) + ":" + str(Min))
     if Hour == 7 and Min == 55:
         send_msg(quote())
+        print('Good morning message sent.')
+        message()
+        print('Sent an email, too...')
     time.sleep(60)
