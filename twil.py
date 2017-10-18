@@ -24,6 +24,7 @@ def modified_date():
 
 def week():
     global color
+    # I think it would be cool to have two start dates for these lists and then generate them dynamically by incrementing the days by 14 for a certain couunt.
     gold = ["Aug 21", "Sep 4", "Sep 18", "Oct 9", "Oct 23", "Oct 6", "Oct 20", "Oct 6", "Oct 20", "Dec 4", "Jan 1", "Jan 15", "Jan 29", "Feb 12", "Feb 26", "Mar 12", "Apr 2", "Apr 16", "Apr 30", "May 14"]
     white = ["Aug 28", "Sep 11", "Sep 25", "Oct 2", "Oct 16", "Oct 17", "Oct 30", "Nov 13", "Nov 27", "Dec 11", "Jan 8", "Jan 22", "Feb 5", "Feb 19", "Mar 5", "Mar 19", "Mar 26", "Apr 9", "Apr 23", "May 7"]
     if any(scannable in x for x in gold):
